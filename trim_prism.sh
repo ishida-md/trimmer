@@ -18,6 +18,7 @@ FASTQ_BASE=`basename ${READ1} _1.fq.gz`
 
 mkdir -p ${1}
 
-fastp -i ${READ1} -I ${READ2} -o ${1}/${READ1T} -O ${1}/${READ2T} --detect_adapter_for_pe -f 8 -F 8 --thread 16 -h ${1}/${FASTQ_BASE}.html -j ${1}/${FASTQ_BASE}.json
+fastp -i ${READ1} -I ${READ2} -o ${1}/${READ1T} -O ${1}/${READ2T} --detect_adapter_for_pe -f 8 -F 8 --thread 16 -h qc/${FASTQ_BASE}.html
 
-pigz -p 8 ${1}/${READ1T} & pigz -p 8 ${1}/${READ2T}
+pigz -p 16 ${1}/${READ1T}
+pigz -p 16 ${1}/${READ2T}
