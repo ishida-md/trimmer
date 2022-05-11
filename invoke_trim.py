@@ -8,7 +8,7 @@ import csv
 if len(sys.argv) != 3:
     raise Exception("Bad number of arguements")
 
-with open(sys.argv[2], "r") as f:
+with open(sys.argv[2], "r", encoding='utf-8-sig') as f:
     csv_reader = csv.DictReader(f)
 
     for row in csv_reader:
