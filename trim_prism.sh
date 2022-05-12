@@ -22,9 +22,9 @@ FASTQ_BASE=`basename ${READ1} _1.fq.gz`
 
 mkdir -p ${1}
 
-fastp -i ${READ1} -I ${READ2} -o ${1}/${READ1C} -O ${1}/${READ2C} -f 8 -F 8 --thread 16 -h qc/${FASTQ_BASE}.html --disable_adapter_trimming
+fastp -i ${READ1} -I ${READ2} -o ${1}/${READ1C} -O ${1}/${READ2C} -f 8 -F 8 --thread 16 -h qc/${FASTQ_BASE}.html -j qc/${FASTQ_BASE}.json --disable_adapter_trimming
 
-fastp -i ${1}/${READ1C} -I ${1}/${READ2C} -o ${1}/${READ1T} -O ${1}/${READ2T} --detect_adapter_for_pe --thread 16 -h qc/${FASTQ_BASE}_2.html
+fastp -i ${1}/${READ1C} -I ${1}/${READ2C} -o ${1}/${READ1T} -O ${1}/${READ2T} --detect_adapter_for_pe --thread 16 -h qc/${FASTQ_BASE}_2.html -j qc/${FASTQ_BASE}_2.json
 
 rm ${1}/${READ1C}
 rm ${1}/${READ2C}
