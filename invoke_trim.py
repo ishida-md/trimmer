@@ -8,6 +8,8 @@ import csv
 if len(sys.argv) != 3:
     raise Exception("Bad number of arguements")
 
+os.makedirs("qc", exist_ok=True)
+
 with open(sys.argv[2], "r", encoding='utf-8-sig') as f:
     csv_reader = csv.DictReader(f)
 
